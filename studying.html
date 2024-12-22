@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="ja" class="light" dir="ltr">
+<html lang="ja" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -7,7 +7,7 @@
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
@@ -31,15 +31,17 @@
         <link rel="stylesheet" href="css/misc.css">
         <link rel="stylesheet" href="css/kbd.css">
 
-    </head>
-    <body class="sidebar-visible no-js">
-    <div id="body-container">
+
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
-
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -61,19 +63,16 @@
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
+            const html = document.documentElement;
             html.classList.remove('light')
             html.classList.add(theme);
-            var body = document.querySelector('body');
-            body.classList.remove('no-js')
-            body.classList.add('js');
+            html.classList.add("js");
         </script>
 
         <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var body = document.querySelector('body');
             var sidebar = null;
             var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
@@ -83,45 +82,25 @@
                 sidebar = 'hidden';
             }
             sidebar_toggle.checked = sidebar === 'visible';
-            body.classList.remove('sidebar-visible');
-            body.classList.add("sidebar-" + sidebar);
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="intro.html">はじめに</a></li><li class="chapter-item "><a href="background.html"><strong aria-hidden="true">1.</strong> 背景</a></li><li class="chapter-item "><a href="platform/intro.html"><strong aria-hidden="true">2.</strong> プラットフォームノート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/windows/installing.html"><strong aria-hidden="true">2.1.</strong> Windows</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/windows/installing.html"><strong aria-hidden="true">2.1.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/windows/installation-issues.html"><strong aria-hidden="true">2.1.2.</strong> インストールの問題</a></li><li class="chapter-item "><a href="platform/windows/startup-issues.html"><strong aria-hidden="true">2.1.3.</strong> 起動の問題</a></li><li class="chapter-item "><a href="platform/windows/display-issues.html"><strong aria-hidden="true">2.1.4.</strong> 表示の問題</a></li><li class="chapter-item "><a href="platform/windows/copy-and-paste.html"><strong aria-hidden="true">2.1.5.</strong> コピー＆ペーストの問題</a></li><li class="chapter-item "><a href="platform/windows/text-size.html"><strong aria-hidden="true">2.1.6.</strong> テキストサイズ</a></li><li class="chapter-item "><a href="platform/windows/permission-problems.html"><strong aria-hidden="true">2.1.7.</strong> 権限の問題</a></li></ol></li><li class="chapter-item "><a href="platform/mac/installing.html"><strong aria-hidden="true">2.2.</strong> macOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/mac/installing.html"><strong aria-hidden="true">2.2.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/mac/display-issues.html"><strong aria-hidden="true">2.2.2.</strong> 表示の問題</a></li></ol></li><li class="chapter-item "><a href="platform/linux/installing.html"><strong aria-hidden="true">2.3.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/linux/installing.html"><strong aria-hidden="true">2.3.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/linux/missing-libraries.html"><strong aria-hidden="true">2.3.2.</strong> ライブラリが見つからない</a></li><li class="chapter-item "><a href="platform/linux/display-issues.html"><strong aria-hidden="true">2.3.3.</strong> 表示の問題</a></li><li class="chapter-item "><a href="platform/linux/blank-window.html"><strong aria-hidden="true">2.3.4.</strong> メインウィンドウが空白</a></li><li class="chapter-item "><a href="platform/linux/distro-packages.html"><strong aria-hidden="true">2.3.5.</strong> Linuxディストロパッケージ</a></li><li class="chapter-item "><a href="platform/linux/gtk-theme.html"><strong aria-hidden="true">2.3.6.</strong> GTKテーマが正しくない</a></li><li class="chapter-item "><a href="platform/linux/wayland.html"><strong aria-hidden="true">2.3.7.</strong> Wayland</a></li><li class="chapter-item "><a href="platform/linux/input-methods.html"><strong aria-hidden="true">2.3.8.</strong> 入力方法</a></li></ol></li></ol></li><li class="chapter-item "><a href="getting-started.html"><strong aria-hidden="true">3.</strong> はじめに</a></li><li class="chapter-item "><a href="getting-help.html"><strong aria-hidden="true">4.</strong> ヘルプの取得</a></li><li class="chapter-item expanded "><a href="studying.html" class="active"><strong aria-hidden="true">5.</strong> 学習</a></li><li class="chapter-item "><a href="editing.html"><strong aria-hidden="true">6.</strong> 追加/編集</a></li><li class="chapter-item "><a href="templates/intro.html"><strong aria-hidden="true">7.</strong> カードテンプレート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="templates/fields.html"><strong aria-hidden="true">7.1.</strong> フィールド置換</a></li><li class="chapter-item "><a href="templates/generation.html"><strong aria-hidden="true">7.2.</strong> カード生成</a></li><li class="chapter-item "><a href="templates/styling.html"><strong aria-hidden="true">7.3.</strong> スタイリングとHTML</a></li><li class="chapter-item "><a href="templates/errors.html"><strong aria-hidden="true">7.4.</strong> チェックとエラー</a></li></ol></li><li class="chapter-item "><a href="preferences.html"><strong aria-hidden="true">8.</strong> 設定</a></li><li class="chapter-item "><a href="deck-options.html"><strong aria-hidden="true">9.</strong> デッキオプション</a></li><li class="chapter-item "><a href="syncing.html"><strong aria-hidden="true">10.</strong> AnkiWebと同期</a></li><li class="chapter-item "><a href="profiles.html"><strong aria-hidden="true">11.</strong> プロファイル</a></li><li class="chapter-item "><a href="browsing.html"><strong aria-hidden="true">12.</strong> ブラウザ</a></li><li class="chapter-item "><a href="filtered-decks.html"><strong aria-hidden="true">13.</strong> フィルターデッキ</a></li><li class="chapter-item "><a href="searching.html"><strong aria-hidden="true">14.</strong> 検索</a></li><li class="chapter-item "><a href="importing/intro.html"><strong aria-hidden="true">15.</strong> インポート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="importing/text-files.html"><strong aria-hidden="true">15.1.</strong> テキストファイル</a></li><li class="chapter-item "><a href="importing/packaged-decks.html"><strong aria-hidden="true">15.2.</strong> パッケージデッキ</a></li></ol></li><li class="chapter-item "><a href="exporting.html"><strong aria-hidden="true">16.</strong> エクスポート</a></li><li class="chapter-item "><a href="backups.html"><strong aria-hidden="true">17.</strong> バックアップ</a></li><li class="chapter-item "><a href="files.html"><strong aria-hidden="true">18.</strong> ファイル管理</a></li><li class="chapter-item "><a href="stats.html"><strong aria-hidden="true">19.</strong> 統計</a></li><li class="chapter-item "><a href="media.html"><strong aria-hidden="true">20.</strong> メディア</a></li><li class="chapter-item "><a href="math.html"><strong aria-hidden="true">21.</strong> 数式と記号</a></li><li class="chapter-item "><a href="leeches.html"><strong aria-hidden="true">22.</strong> 苦戦（忘却多発）</a></li><li class="chapter-item "><a href="addons.html"><strong aria-hidden="true">23.</strong> アドオン</a></li><li class="chapter-item "><a href="troubleshooting.html"><strong aria-hidden="true">24.</strong> トラブルシューティング</a></li><li class="chapter-item "><a href="sync-server.html"><strong aria-hidden="true">25.</strong> 同期サーバー</a></li><li class="chapter-item "><a href="misc.html"><strong aria-hidden="true">26.</strong> その他</a></li><li class="chapter-item affix "><a href="contrib.html">貢献</a></li><li class="chapter-item affix "><a href="faqs.html">FAQs</a></li><li class="chapter-item affix "><a href="resources.html">リソース</a></li></ol>
-            </div>
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <!-- Track and set sidebar scroll position -->
-        <script>
-            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
-            sidebarScrollbox.addEventListener('click', function(e) {
-                if (e.target.tagName === 'A') {
-                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
-                }
-            }, { passive: true });
-            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
-            sessionStorage.removeItem('sidebar-scroll');
-            if (sidebarScrollTop) {
-                // preserve sidebar scroll position when navigating via links within sidebar
-                sidebarScrollbox.scrollTop = sidebarScrollTop;
-            } else {
-                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
-                var activeSection = document.querySelector('#sidebar .active');
-                if (activeSection) {
-                    activeSection.scrollIntoView({ block: 'center' });
-                }
-            }
-        </script>
-
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -187,92 +166,92 @@
 <p>デッキをクリックすると、それが「現在のデッキ」となり、Ankiは学習画面に切り替わります。メインウィンドウの上部にある「デッキ」をクリックすることで、いつでもデッキリストに戻り、現在選択されているデッキを変更できます。（メニューの「デッキを学習」アクションを使用して、キーボードから新しいデッキを選択することもできますし、<kbd>s</kbd>キーを押して現在選択されているデッキを学習することもできます。）</p>
 <p>デッキの右側にある歯車ボタンをクリックすると、デッキの名前を変更したり、削除したり、<a href="deck-options.html">オプション</a>を変更したり、<a href="exporting.html">エクスポート</a>することができます。</p>
 <h2 id="学習概要"><a class="header" href="#学習概要">学習概要</a></h2>
-<p>デッキをクリックして学習を開始すると、今日のカードの予定数が表示される画面が表示されます。これを「デッキ概要」画面と呼びます：</p>
+<p>デッキをクリックすると、今日のカードの予定数が表示される画面が表示されます。これを「デッキ概要」画面と呼びます：</p>
 <p><img src="media/study_overview.png" alt="学習概要" /></p>
 <p>カードは<a href="getting-started.html#%E3%82%AB%E3%83%BC%E3%83%89%E3%82%BF%E3%82%A4%E3%83%97">3つのタイプ</a>に分かれています：新規、習得中、および復習予定。
-デッキオプションで<a href="#%E5%85%84%E5%BC%9F%E3%82%AB%E3%83%BC%E3%83%89%E3%81%A8%E5%9F%8B%E3%82%81%E3%82%8B">兄弟カードを埋める</a>を有効にしている場合、埋められるカードの数が灰色で表示されることがあります：</p>
+デッキオプションで<a href="#%E5%85%84%E5%BC%9F%E3%82%AB%E3%83%BC%E3%83%89%E3%81%A8%E5%9F%8B%E3%82%81%E3%82%8B">兄弟関係のカードを非表示</a>を有効にしている場合、当日に非表示となるカードの数が灰色で表示されることがあります：</p>
 <p><img src="media/study_overview_buried_cards.png" alt="学習概要（埋められたカード）" /></p>
-<p>学習セッションを開始するには、<strong>今すぐ学習</strong>ボタンをクリックします。Ankiはその日のカードがなくなるまでカードを表示し続けます。</p>
-<p>習得中に、キーボードの<kbd>s</kbd>キーを押すと、概要に戻ることができます。</p>
+<p>学習セッションを開始するには、<strong>学習開始</strong>ボタンをクリックします。Ankiはその日のカードがなくなるまでカードを表示し続けます。</p>
+<p>学習中に、キーボードの<kbd>s</kbd>キーを押すと、概要に戻ることができます。</p>
 <h2 id="質問"><a class="header" href="#質問">質問</a></h2>
-<p>カードが表示されるとき、最初に表示されるのは質問のみです。答えを考えた後、<strong>答えを表示</strong>ボタンをクリックするか、スペースバーを押します。すると答えが表示されます。答えを思い出すのに少し時間がかかっても構いませんが、一般的なルールとして、約10秒以内に答えられない場合は、無理に思い出そうとするよりも答えを表示した方が良いでしょう。</p>
+<p>カードが表示されるとき、最初に表示されるのは質問のみです。答えを考えた後、<strong>解答を表示</strong>ボタンをクリックするか、スペースバーを押します。すると答えが表示されます。答えを思い出すのに少し時間がかかっても構いませんが、一般的なルールとして、約10秒以内に答えられない場合は、無理に思い出そうとするよりも答えを表示した方が良いでしょう。</p>
 <p>答えが表示されたら、自分が考えた答えと表示された答えを比較し、どれだけ覚えていたかをAnkiに伝える必要があります。自分の答えを正確に比較する自信がない場合は、Ankiに<a href="templates/fields.html#%E7%AD%94%E3%81%88%E3%81%AE%E7%A2%BA%E8%AA%8D">答えを入力するように促す</a>こともできます。</p>
-<h2 id="学習-再学習カード"><a class="header" href="#学習-再学習カード">学習 再学習カード</a></h2>
-<p>新しいカードを学習する場合や、忘れてしまったカードを再学習する場合、Ankiはカードを1回以上表示して覚えるのを助けます。各回は「学習ステップ」と呼ばれます。デフォルトでは、1分と10分の2つのステップがあります。ステップの数とその間の遅延は<a href="deck-options.html#%E6%96%B0%E3%81%97%E3%81%84%E3%82%AB%E3%83%BC%E3%83%89">デッキオプション</a>で変更できます。</p>
+<h2 id="習得中再習得中カード"><a class="header" href="#習得中再習得中カード">習得中/再習得中カード</a></h2>
+<p>新規カードを学習する場合や、忘れてしまったカードを再学習する場合、Ankiはカードを1回以上表示して覚えるのを助けます。各回は「習得ステップ」と呼ばれます。デフォルトでは、1分と10分の2つのステップがあります。ステップの数とその間の遅延は<a href="deck-options.html#%E6%96%B0%E3%81%97%E3%81%84%E3%82%AB%E3%83%BC%E3%83%89">デッキオプション</a>で変更できます。</p>
 <p>習得中には4つの評価ボタンがあります：</p>
 <ul>
 <li>
-<p><strong>再学習</strong>はカードを最初のステップに戻します。</p>
+<p>「<strong>もう一度</strong>」はカードを最初のステップに戻します。</p>
 </li>
 <li>
-<p><strong>難しい</strong>は現在のステップを繰り返します。</p>
+<p>「<strong>難しい</strong>」は現在のステップを繰り返します。</p>
 <ul>
 <li>カードが最初（かつ唯一）のステップにある場合、遅延はステップの50%長くなります。ただし、この遅延はステップより1日以上長くなることはありません。</li>
-<li>カードが最初のステップにあり、複数のステップを設定している場合、遅延は「再学習」と「良い」の平均、つまり最初の2つのステップの平均になります。</li>
-<li>カードが次のステップにある場合、「難しい」は前の遅延を繰り返します。</li>
+<li>カードが最初のステップにあり、複数のステップを設定している場合、遅延は「もう一度」と「正解」の平均、つまり最初の2つのステップの平均になります。</li>
+<li>カードが最初のステップ以外のステップにある場合、「難しい」は前の遅延を繰り返します。</li>
 </ul>
 </li>
 <li>
-<p><strong>良い</strong>はカードを<a href="deck-options.html#%E5%AD%A6%E7%BF%92%E3%82%B9%E3%83%86%E3%83%83%E3%83%97">次のステップ</a>に進めます。カードが最終ステップにある場合、カードは復習カードに変わります（「卒業」します）。デフォルトでは、カードが学習ステップの最後に達すると、翌日に再び表示され、その後は徐々に長い遅延で表示されます（次のセクションを参照）。</p>
+<p>「<strong>正解</strong>」はカードを<a href="deck-options.html#%E5%AD%A6%E7%BF%92%E3%82%B9%E3%83%86%E3%83%83%E3%83%97">次のステップ</a>に進めます。カードが最終ステップにある場合、カードは復習カードに変わります（「卒業」します）。デフォルトでは、カードが習得ステップの最後に達すると、翌日に再び表示され、その後は徐々に長い遅延で表示されます（次のセクションを参照）。</p>
 </li>
 <li>
-<p><strong>簡単</strong>は残りのステップがあってもカードを即座に復習カードに変えます。<a href="deck-options.html#%E7%B0%A1%E5%8D%98%E9%96%93%E9%9A%94">デフォルトでは</a>、カードは4日後に再び表示され、その後は徐々に長い遅延で表示されます。v1スケジューラーでは、「簡単」ボタンは再学習モードでは表示されません。これは「良い」と同じ間隔を与えるためです。 <a href="https://shigeyukey.github.io/Anki-faqs-jp/the-anki-2.1-scheduler.html">v2スケジューラー+</a>では、再習得中のカードに対して「簡単」ボタンは間隔を1日延ばします。</p>
+<p>「<strong>簡単</strong>」は残りのステップがあってもカードを即座に復習カードに変えます。<a href="deck-options.html#%E7%B0%A1%E5%8D%98%E9%96%93%E9%9A%94">デフォルトでは</a>、カードは4日後に再び表示され、その後は徐々に長い遅延で表示されます。v1スケジューラーでは、「簡単」ボタンは再習得モードでは表示されません。これは「正解」と同じ間隔を与えるためです。 <a href="https://shigeyukey.github.io/Anki-faqs-jp/the-anki-2.1-scheduler.html">v2スケジューラー+</a>では、再習得中のカードに対して「簡単」ボタンは間隔を1日延ばします。</p>
 </li>
 </ul>
-<p>カードが初めて表示されるとき、ステップ1から始まります。つまり、カードに対して初めて<strong>良い</strong>を選択すると、10分後にもう一度表示され、最初の1分のステップはスキップされます。しかし、<strong>再学習</strong>を選択すると、カードは1分後に再び表示されます。</p>
-<p>キーボードの<kbd>1</kbd>、<kbd>2</kbd>、<kbd>3</kbd>、<kbd>4</kbd>キーを使用して特定のボタンを選択できます。<kbd>1</kbd>は<strong>再学習</strong>に対応しています。<kbd>Space</kbd>または<kbd>Enter</kbd>を押すと<strong>良い</strong>が選択されます。</p>
-<p>他に表示するカードがない場合、Ankiは遅延が完全に経過していなくても学習カードを再び表示します。完全な学習遅延を待ちたい場合は、<a href="preferences.html">設定&gt;スケジューリング&gt;学習先行制限</a>でこの動作を変更できます。</p>
+<p>カードが初めて表示されるとき、最初のステップから始まります。つまり、カードに対して初めて「<strong>正解</strong>」を選択すると、10分後にもう一度表示され、最初の1分のステップはスキップされます。しかし、「<strong>もう一度</strong>」を選択すると、カードは1分後に再び表示されます。</p>
+<p>キーボードの<kbd>1</kbd>、<kbd>2</kbd>、<kbd>3</kbd>、<kbd>4</kbd>キーを使用して特定のボタンを選択できます。<kbd>1</kbd>は「<strong>もう一度</strong>」に対応しています。<kbd>Space</kbd>または<kbd>Enter</kbd>を押すと「<strong>正解</strong>」が選択されます。</p>
+<p>他に表示するカードがない場合、Ankiは遅延が完全に経過していなくても学習カードを再び表示します。完全な学習遅延を待ちたい場合は、<a href="preferences.html">設定&gt;学習&gt;習得学習の前倒し許容時間</a>でこの動作を変更できます。</p>
 <h2 id="復習カード"><a class="header" href="#復習カード">復習カード</a></h2>
 <p>カードが以前に学習され、再び復習する準備ができたとき、回答を評価するための4つのボタンがあります：</p>
 <ul>
 <li>
-<p><strong>再学習</strong>は回答を不正解としてマークし、Ankiにそのカードを将来より頻繁に表示するように指示します。このカードは「忘却した」と見なされます。忘却した復習の処理方法については、<a href="deck-options.html#%E5%BF%98%E5%8D%B4">忘却</a>セクションを参照してください。</p>
+<p>「<strong>もう一度</strong>」は回答を不正解としてマークし、Ankiにそのカードを将来より頻繁に表示するように指示します。このカードは「忘却した」と見なされます。忘却した復習の処理方法については、<a href="deck-options.html#%E5%BF%98%E5%8D%B4">忘却</a>セクションを参照してください。</p>
 </li>
 <li>
-<p><strong>難しい</strong>はデフォルトで、前回よりも<a href="deck-options.html#%E3%83%8F%E3%83%BC%E3%83%89%E9%96%93%E9%9A%94">少し長い遅延</a>でカードを表示し、Ankiにそのカードを将来より頻繁に表示するように指示します。</p>
+<p>「<strong>難しい</strong>」はデフォルトで、前回よりも<a href="deck-options.html#%E3%83%8F%E3%83%BC%E3%83%89%E9%96%93%E9%9A%94">少し長い遅延</a>でカードを表示し、Ankiにそのカードを将来より頻繁に表示するように指示します。</p>
 </li>
 <li>
-<p><strong>良い</strong>は、前回の遅延がちょうど良かったことをAnkiに伝え、カードのイーズを上下に調整する必要がないことを示します。<a href="deck-options.html#%E5%88%9D%E6%9C%9F%E3%81%AE%E5%AE%B9%E6%98%93%E3%81%95">デフォルトの開始イーズ</a>では、カードは前回の約2.5倍の遅延で再び表示されます。例えば、前回カードを見るのに10日待った場合、次の遅延は約25日になります。</p>
+<p>「<strong>正解</strong>」は、前回の遅延がちょうど良かったことをAnkiに伝え、カードの「易しさ」の値を上下に調整する必要がないことを示します。デフォルトの<a href="deck-options.html#%E5%88%9D%E6%9C%9F%E3%81%AE%E5%AE%B9%E6%98%93%E3%81%95">復習開始時の「易しさ」</a>では、カードは前回の約2.5倍の遅延で再び表示されます。例えば、前回カードを見るのに10日待った場合、次の遅延は約25日になります。</p>
 </li>
 <li>
-<p><strong>簡単</strong>は、遅延が短すぎたことをAnkiに伝えます。カードは<a href="deck-options.html#%E7%B0%A1%E5%8D%98%E3%83%9C%E3%83%BC%E3%83%8A%E3%82%B9">「良い」よりもさらに先の未来</a>にスケジュールされ、Ankiは将来そのカードを表示する頻度を減らします。「簡単」は遅延を急速に増加させるため、最も簡単なカードにのみ使用するのが最適です。通常は「良い」を選択することが多いでしょう。</p>
+<p>「<strong>簡単</strong>」は、遅延が短すぎたことをAnkiに伝えます。カードは<a href="deck-options.html#%E7%B0%A1%E5%8D%98%E3%83%9C%E3%83%BC%E3%83%8A%E3%82%B9">「正解」よりもさらに先の未来</a>にスケジュールされ、Ankiは将来そのカードを表示する頻度を減らします。「簡単」は遅延を急速に増加させるため、最も簡単なカードにのみ使用するのが最適です。通常は「正解」を選択することが多いでしょう。</p>
 </li>
 </ul>
-<p>学習カードと同様に、キーボードの<kbd>1</kbd>、<kbd>2</kbd>、<kbd>3</kbd>、<kbd>4</kbd>キーを使用して回答を選択できます。<kbd>スペースバー</kbd>または<kbd>Enter</kbd>を押すと<strong>良い</strong>が選択されます。</p>
+<p>学習カードと同様に、キーボードの<kbd>1</kbd>、<kbd>2</kbd>、<kbd>3</kbd>、<kbd>4</kbd>キーを使用して回答を選択できます。<kbd>スペースバーSpace</kbd>または<kbd>Enter</kbd>を押すと「<strong>正解</strong>」が選択されます。</p>
 <p>アルゴリズムの仕組みについて詳しくは、<a href="deck-options.html">デッキオプション</a>および<a href="https://shigeyukey.github.io/Anki-faqs-jp/what-spaced-repetition-algorithm.html">FAQ</a>をご覧ください。</p>
 <h2 id="予定数"><a class="header" href="#予定数">予定数</a></h2>
-<p>質問のみが表示されているとき、Ankiは画面の下部に6 + 9 + 59のような3つの数字を表示します。これらは新しいカード（青）、習得中のカード（オレンジ）、および復習するカード（緑）を表しています。これらの数字を見たくない場合は、Ankiの<a href="preferences.html">設定</a>でオフにすることができます。</p>
+<p>質問のみが表示されているとき、Ankiは画面の下部に6 + 9 + 59のような3つの数字を表示します。これらは新規カード（青）、習得中のカード（赤）、および復習カード（緑）を表しています。これらの数字を見たくない場合は、Ankiの<a href="preferences.html">設定</a>でオフにすることができます。</p>
 <p><img src="media/due_counts.png" alt="予定数" /></p>
-<p>v1スケジューラーでは、これらの数字はそのキュー内のすべてのカードを完了するために必要な_復習_の数を示しており、_カード_の数ではありません。失敗したカードに対して複数のステップが設定されている場合、そのカードを何度も表示する必要があるため、失敗すると数字は1以上増加します。</p>
+<p>v1スケジューラーでは、これらの数字はそのキュー内のすべてのカードを完了するために必要な_学習_の数を示しており、_カード_の数ではありません。失敗したカードに対して複数のステップが設定されている場合、そのカードを何度も表示する必要があるため、失敗すると数字は1以上増加します。</p>
 <p><a href="https://shigeyukey.github.io/Anki-faqs-jp/the-anki-2.1-scheduler.html">v2スケジューラー</a>では、これらの数字は_カード_の数を示しているため、残りのステップに関係なく数字は常に1ずつ増加します。</p>
 <p>答えが表示されると、Ankiは各ボタンの上に次にカードが表示される予定時間の推定値を表示します。推定値を見たくない場合は、Ankiの<a href="preferences.html">設定</a>で無効にすることができます。</p>
 <h2 id="ファズファクター"><a class="header" href="#ファズファクター">ファズファクター</a></h2>
-<p>復習カードでイーズボタンを選択すると、Ankiはカードが同時に導入され、同じ評価を受けた場合に一緒に固まって常に同じ日に復習されるのを防ぐために、少量のランダムな「ファズ」を適用します。このファズは<a href="https://shigeyukey.github.io/Anki-faqs-jp/the-2021-scheduler.html">v3スケジューラー</a>が有効になっている場合に回答ボタンに表示されます。そのため、以前のバージョンを使用していて、選択したものと実際のカードの間隔にわずかなずれがある場合は、これが原因である可能性があります。</p>
-<p>学習カードにも最大5分の追加遅延が与えられ、常に同じ順序で表示されないようにしますが、回答ボタンには反映されません。この機能をオフにすることはできません。</p>
+<p>復習カードに回答すると、Ankiは、同じ日に回答したカードが同じ評価を受けた場合に一緒に固まって常に同じ日に復習されるのを防ぐために、少量のランダムな「ファズ」を適用します。このファズは<a href="https://shigeyukey.github.io/Anki-faqs-jp/the-2021-scheduler.html">v3スケジューラー</a>が有効になっている場合に回答ボタンに表示されます。そのため、以前のバージョンを使用していて、選択したものと実際のカードの間隔にわずかなずれがある場合は、これが原因である可能性があります。</p>
+<p>習得中カードにも最大5分の追加遅延が与えられ、常に同じ順序で表示されないようにしますが、回答ボタンには反映されません。この機能をオフにすることはできません。</p>
 <h2 id="編集とその他"><a class="header" href="#編集とその他">編集とその他</a></h2>
 <p>左下の<strong>編集</strong>ボタンをクリックすると、現在のノートを編集できます。編集を終えると、学習画面に戻ります。編集画面は<a href="editing.html">ノートの追加</a>画面と非常に似ています。</p>
-<p>復習画面の右下には<strong>その他</strong>とラベル付けされたボタンがあります。このボタンをクリックすると、現在のカードやノートに対して行える他の操作が表示されます：</p>
+<p>学習画面の右下には<strong>その他</strong>ボタンがあります。このボタンをクリックすると、現在のカードやノートに対して行える他の操作が表示されます：</p>
 <ul>
 <li>
-<p><a href="editing.html#%E3%83%95%E3%83%A9%E3%82%B0%E3%81%AE%E4%BD%BF%E7%94%A8"><strong>カードにフラグを付ける</strong></a>：カードに色付きのマーカーを追加するか、オフに切り替えます。フラグは習得中に表示され、ブラウズ画面でフラグ付きカードを検索できます。これは、後でカードに対して何らかのアクションを実行したい場合（例えば、家に帰ってから単語を調べるなど）に便利です。Anki 2.1.45以降を使用している場合、<a href="browsing.html">ブラウザ</a>からフラグの名前を変更することもできます。</p>
+<p><a href="editing.html#%E3%83%95%E3%83%A9%E3%82%B0%E3%81%AE%E4%BD%BF%E7%94%A8"><strong>カードにフラグを付ける</strong></a>：カードに色付きの目印（旗のマーク）を追加するか、オフに切り替えます。フラグは学習中に表示され、ブラウズ画面でフラグ付きカードを検索できます。これは、後でカードに対して何らかのアクションを実行したい場合（例えば、家に帰ってから単語を調べるなど）に便利です。Anki 2.1.45以降を使用している場合、<a href="browsing.html">ブラウザ</a>からフラグの名前を変更することもできます。</p>
 </li>
 <li>
-<p><strong>カード/ノートを埋める</strong>: カードまたはノートのすべてのカードを翌日まで復習から隠します。
-（それまでにカードを表示したい場合は、<a href="studying.html#%E5%AD%A6%E7%BF%92%E6%A6%82%E8%A6%81">デッキ概要</a>画面で「埋めたカードを表示」ボタンをクリックできます。）この機能は、今すぐにカードに答えられない場合や、後で再度確認したい場合に便利です。同じノートのカードに対しても<a href="studying.html#%E5%85%84%E5%BC%9F%E3%82%AB%E3%83%BC%E3%83%89%E3%81%A8%E5%9F%8B%E3%82%81%E3%82%8B">自動的に埋める</a>ことができます。</p>
-<p>旧スケジューラーでは、カードが埋められたときに習得中であった場合、それらは埋められる前に新しいカードキューまたは復習キューに戻されました。</p>
-<p>しかし、<a href="https://shigeyukey.github.io/Anki-faqs-jp/the-anki-2.1-scheduler.html">2.1スケジューラー</a>では、カードを埋めてもカードの学習ステップはリセットされません。</p>
+<p><strong>カードを今日は非表示/ノートを今日は非表示</strong>: 一枚のカード または 一個のノートのすべてのカード を翌日まで学習画面で隠します。
+（それまでにカードを表示したい場合は、<a href="studying.html#%E5%AD%A6%E7%BF%92%E6%A6%82%E8%A6%81">デッキ概要</a>画面の「非表示を解除」ボタンを押してください。）この機能は、今すぐにカードに答えられない場合や、後で再度確認したい場合に便利です。「今日は非表示」は、同じノートのカードに対して<a href="studying.html#%E5%85%84%E5%BC%9F%E3%82%AB%E3%83%BC%E3%83%89%E3%81%A8%E3%80%8C%E4%BB%8A%E6%97%A5%E3%81%AF%E9%9D%9E%E8%A1%A8%E7%A4%BA%E3%80%8D">自動的に適用</a>することもできます。</p>
+<p>旧スケジューラーでは、カードが「今日は非表示」になったときに習得中であった場合、それらは「今日は非表示」になる前に新規カードキューまたは復習キューに戻されました。</p>
+<p>しかし、<a href="https://shigeyukey.github.io/Anki-faqs-jp/the-anki-2.1-scheduler.html">2.1スケジューラー</a>では、カードを「今日は非表示」にしてもカードの学習ステップはリセットされません。</p>
 </li>
 <li>
-<p><strong>カードを忘れる</strong>: 現在のカードを<a href="browsing.html#%E3%82%AB%E3%83%BC%E3%83%89">新しいキューの最後</a>に移動します。</p>
-<p>Anki 2.1.50以降、v3スケジューラーを使用して最初に学習したときに、新しいカードの元の順序をAnkiが記憶します。「元の位置に戻す」オプションを使用すると、カードを忘れたときに元の位置にリセットできます。</p>
-<p>「繰り返し回数と失敗回数をリセット」オプションを有効にすると、カードの復習および失敗カウンターがゼロにリセットされます。これは、カード情報画面の下部に表示される復習履歴を削除するものではありません。</p>
+<p><strong>新規カードにリセット</strong>: 現在のカードを<a href="browsing.html#%E3%82%AB%E3%83%BC%E3%83%89">新規カードのキューの最後</a>に移動します。</p>
+<p>Anki 2.1.50以降、v3スケジューラーを使用して最初に学習したときに、新規カードの元の順序をAnkiが記憶します。「可能な限り元の位置に復元」オプションを使用すると、カードをリセットしたときに元の位置にリセットできます。</p>
+<p>「学習回数と復習での忘却回数をリセット」オプションを有効にすると、カードの学習および復習での忘却のカウントがゼロにリセットされます。これは、カード情報画面の下部に表示される復習履歴を削除するものではありません。</p>
 </li>
 <li>
-<p><strong>期限を設定</strong>: カードを復習キューに入れ、<a href="browsing.html#%E3%82%AB%E3%83%BC%E3%83%89">特定の日に期限を設定します。</a></p>
+<p><strong>期日を設定</strong>: カードを復習キューに入れ、<a href="browsing.html#%E3%82%AB%E3%83%BC%E3%83%89">特定の日に期日を設定します。</a></p>
 </li>
 <li>
-<p><strong>カード/ノートを一時停止</strong>: カードまたはノートのすべてのカードを手動で一時停止解除するまで復習から隠します（ブラウザで一時停止ボタンをクリックして解除します）。これは、しばらくの間ノートを復習したくないが、削除したくない場合に便利です。旧スケジューラーでは、カードが習得中に一時停止された場合、それらは一時停止される前に新しいカードキューまたは復習キューに戻されました。</p>
-<p>しかし、<a href="https://shigeyukey.github.io/Anki-faqs-jp/the-anki-2.1-scheduler.html">2.1スケジューラー</a>では、カードを一時停止してもカードの学習ステップはリセットされません。</p>
+<p><strong>カード/ノートを休止</strong>: カードまたはノートのすべてのカードを手動で休止解除（ブラウザで休止ボタンをクリック）するまで学習画面から隠します。これは、しばらくの間ノートを学習したくないが、削除はしたくない場合に便利です。旧スケジューラーでは、カードが習得中に休止された場合、それらは休止される前に新規カードキューまたは復習キューに戻されました。</p>
+<p>しかし、<a href="https://shigeyukey.github.io/Anki-faqs-jp/the-anki-2.1-scheduler.html">2.1スケジューラー</a>では、カードを休止してもカードの習得ステップはリセットされません。</p>
 </li>
 <li>
 <p><strong>オプション</strong>: 現在のデッキの<a href="deck-options.html">オプション</a>を編集します。</p>
@@ -284,22 +263,22 @@
 <p><strong>前のカード情報</strong>: 前のカードに関する<a href="stats.html#%E3%82%AB%E3%83%BC%E3%83%89%E6%83%85%E5%A0%B1">統計情報</a>を表示します。</p>
 </li>
 <li>
-<p><a href="editing.html#%E3%83%9E%E3%83%BC%E3%82%AF%E6%B8%88%E3%81%BF%E3%82%BF%E3%82%B0"><strong>ノートにマークを付ける</strong></a>: 現在のノートに「マーク済み」タグを追加し、ブラウザで簡単に見つけられるようにします。これは個々のカードにフラグを付けるのと似ていますが、タグを使用するため、ノートに複数のカードがある場合、すべてのカードがマーク済みタグの検索に表示されます。ほとんどのユーザーはフラグを使用することをお勧めします。</p>
+<p><a href="editing.html#%E3%83%9E%E3%83%BC%E3%82%AF%E6%B8%88%E3%81%BF%E3%82%BF%E3%82%B0"><strong>ノートにマークを付ける</strong></a>: 現在のノートに「marked」（＝マーク済み）タグを追加し、ブラウザで簡単に見つけられるようにします。これは個々のカードにフラグを付けるのと似ていますが、タグを使用するため、ノートに複数のカードがある場合、すべてのカードが「marked」タグの検索に表示されます。ほとんどのユーザーはフラグを使用することをお勧めします。</p>
 </li>
 <li>
-<p><strong>コピーを作成</strong>: 現在のノートの<a href="browsing.html#%E9%87%8D%E8%A4%87%E3%81%AE%E6%A4%9C%E7%B4%A2">複製</a>をエディタで開きます。これにより、カードのバリエーションを簡単に取得するために少し修正することができます。デフォルトでは、複製カードは元のカードと同じデッキに作成されます。</p>
+<p><strong>ノートを複製</strong>: 現在のノートの<a href="browsing.html#%E9%87%8D%E8%A4%87%E3%81%AE%E6%A4%9C%E7%B4%A2">複製</a>をエディタで開きます。これにより、カードのバリエーションを簡単に取得するために少し修正することができます。デフォルトでは、複製カードは元のカードと同じデッキに作成されます。</p>
 </li>
 <li>
 <p><strong>ノートを削除</strong>: ノートとそのすべてのカードを削除します。</p>
 </li>
 <li>
-<p><strong>オーディオを再生</strong>: カードの表または裏にオーディオがある場合、それを再生します。</p>
+<p><strong>音声を再生</strong>: カードの表または裏にオーディオがある場合、それを再生します。</p>
 </li>
 <li>
-<p><strong>オーディオを一時停止</strong>: 再生中のオーディオを一時停止します。</p>
+<p><strong>音声を一時停止</strong>: 再生中のオーディオを一時停止します。</p>
 </li>
 <li>
-<p><strong>オーディオ -5秒 / +5秒</strong>: 現在再生中のオーディオを5秒戻す/進める。</p>
+<p><strong>音声を5秒戻す / 音声を5秒進める</strong>: 現在再生中のオーディオを5秒戻す/進める。</p>
 </li>
 <li>
 <p><strong>自分の声を録音</strong>: 発音を確認するためにマイクから録音します。この録音は一時的なもので、次のカードに移動すると消えます。カードに音声を永久に追加したい場合は、編集ウィンドウで行うことができます。</p>
@@ -316,28 +295,28 @@
 <p>v1スケジューラーを使用している場合、デッキにサブデッキがあると、カードは<a href="studying.html#%E8%A1%A8%E7%A4%BA%E9%A0%86%E5%BA%8F">各デッキから順番に</a>表示されます。</p>
 </li>
 <li>
-<p><a href="https://shigeyukey.github.io/Anki-faqs-jp/the-anki-2.1-scheduler.html">v2スケジューラー</a>を使用している場合、デッキにサブデッキがあると、復習はすべての子デッキから一度に取得されます。子デッキの復習制限は無視され、クリックしたデッキの制限のみが適用されます。</p>
+<p><a href="https://shigeyukey.github.io/Anki-faqs-jp/the-anki-2.1-scheduler.html">v2スケジューラー</a>を使用している場合、デッキにサブデッキがあると、カードはすべての子デッキから一度に取得されます。子デッキの枚数制限は無視され、クリックしたデッキの制限のみが適用されます。</p>
 </li>
 <li>
 <p><a href="https://shigeyukey.github.io/Anki-faqs-jp/the-2021-scheduler.html">v3スケジューラー</a>を使用している場合、各子デッキの制限も適用され、デッキ順にカードを表示する必要もありません。詳細については、マニュアルの<a href="deck-options.html#%E5%BE%A9%E7%BF%92%E3%81%AE%E3%82%BD%E3%83%BC%E3%83%88%E9%A0%86%E5%BA%8F">デッキオプション</a>セクションを参照してください。</p>
 </li>
 </ul>
 <p>デフォルトでは、新しいカードの場合、Ankiはデッキからアルファベット順にカードを取得します。したがって、上記の例では、最初に「French」から、次に「My Textbook」、最後に「Vocab」からカードが取得されます。これを利用して、リストの上位に表示されるデッキに高優先度のカードを配置することで、カードの表示順序を制御できます。コンピュータがテキストをアルファベット順に並べ替えるとき、「-」文字はアルファベット文字の前に来て、「~」はその後に来ます。したがって、デッキを「-Vocab」と呼ぶことで最初に表示されるようにし、他のデッキを「~My Textbook」と呼ぶことで、すべての後に表示されるようにすることができます。</p>
-<p>新しいカードと復習は別々に取得され、Ankiは両方のキューが空になるまで次のデッキに進むのを待たないため、あるデッキの新しいカードを見ている間に別のデッキの復習を見ることがあるかもしれません。これを避けたい場合は、親デッキの代わりに直接学習したいデッキをクリックしてください。</p>
+<p>新規カードと復習カードは別々に取得され、Ankiは両方のキューが空になるまで次のデッキに進むのを待たないため、あるデッキの新規カードを見ている間に別のデッキの復習カードを見ることがあるかもしれません。これを避けたい場合は、親デッキの代わりに直接学習したいデッキをクリックしてください。</p>
 <p>習得中のカードは時間に敏感なため、すべてのデッキから一度に取得され、期限順に表示されます。</p>
-<p>特定のデッキからの復習の表示順序を制御したり、新しいカードを順序付きからランダムに変更したりするには、<a href="deck-options.html">デッキオプション</a>を参照してください。新しいカードのより細かい順序付けについては、<a href="browsing.html">ブラウザ</a>で順序を変更できます。</p>
-<h2 id="兄弟カードと埋める"><a class="header" href="#兄弟カードと埋める">兄弟カードと埋める</a></h2>
+<p>特定のデッキからの復習の表示順序を制御したり、新規カードを順序付きからランダムに変更したりするには、<a href="deck-options.html">デッキオプション</a>を参照してください。新規カードのより細かい順序付けについては、<a href="browsing.html">ブラウザ</a>で順序を変更できます。</p>
+<h2 id="兄弟関係のカードの非表示"><a class="header" href="#兄弟関係のカードの非表示">兄弟関係のカードの非表示</a></h2>
 <p><a href="getting-started.html">基本</a>から思い出してください。Ankiは、入力した内容に対して複数のカードを作成できます。例えば、表→裏のカードや裏→表のカード、または同じテキストからの2つの異なる穴埋め問題などです。これらの関連カードは「兄弟カード」と呼ばれます。</p>
-<p>兄弟カードを持つカードに回答すると、Ankiはそのカードの兄弟カードが同じセッションで表示されないように自動的に「埋める」ことができます。埋められたカードは、新しい日になるまで、または<a href="studying.html#%E5%AD%A6%E7%BF%92%E6%A6%82%E8%A6%81">デッキ概要</a>画面の下部に表示される「埋めたカードを表示」ボタンを使用して手動で埋め戻すまで、復習から隠されます。兄弟カードが同じデッキにない場合でも（例えば、<a href="templates/intro.html">デッキオーバーライド</a>機能を使用している場合）、Ankiは兄弟カードを埋めます。</p>
-<p>埋める機能は<a href="deck-options.html">デッキオプション</a>画面から有効にできます。新しいカードと復習のための個別の設定があります。</p>
-<p>Ankiは、新しいカードや復習カードのみを埋めます。習得中のカードは時間が重要なため、隠されません。一方、習得中のカードを学習すると、新しいカードや復習カードの兄弟カードは埋められます。</p>
-<p>注意：カードは同時に埋められたり一時停止されたりすることはできません。埋められたカードを一時停止すると、そのカードは埋め戻されます。Anki 2.1.49以降では、一時停止されたカードを埋めることはできませんが、以前のバージョンではカードが一時停止解除されます。</p>
+<p>兄弟カードを持つカードに回答すると、Ankiはそのカードの兄弟カードが同じセッションで表示されないように自動的に「今日は非表示」にすることができます。「今日は非表示」となったカードは、新しい日になるまで、または<a href="studying.html#%E5%AD%A6%E7%BF%92%E6%A6%82%E8%A6%81">デッキ概要</a>画面の下部に表示される「非表示を解除」ボタンを使用して手動で解除するまで、学習画面には表示されません。兄弟カードが同じデッキにない場合でも（例えば、<a href="templates/intro.html">デッキ選択を上書き</a>機能を使用している場合）、Ankiは兄弟カードを当日は非表示にします。</p>
+<p>この機能は<a href="deck-options.html">デッキオプション</a>画面から有効にできます。新規カードと復習カードのための個別の設定があります。</p>
+<p>Ankiは、新規カードや復習カードである兄弟カードのみを自動的に「今日は非表示」にします。習得中のカードは学習タイミングの重要性が高いため、「今日は非表示」（つまり、翌日まで学習を保留）は行われません。一方、習得中のカードを学習すると、新規カードや復習カードである兄弟カードは当日は非表示となります。</p>
+<p>注意：カードに「今日は非表示」と休止を同時に適用することはできません。「今日は非表示」になっているカードを休止すると、そのカードの「今日は非表示」は解除されます。Anki 2.1.49以降では、休止カードを「今日は非表示」にすることはできませんが、以前のバージョンではカードの休止が解除されます。</p>
 <h2 id="キーボードショートカット"><a class="header" href="#キーボードショートカット">キーボードショートカット</a></h2>
-<p>Ankiのほとんどの一般的な操作にはキーボードショートカットがあります。ほとんどのショートカットはインターフェースで確認できます：メニュー項目の横にショートカットが表示され、ボタンにマウスカーソルを合わせると、一般的にツールチップにショートカットが表示されます。</p>
-<p>習得中は、<kbd>Space</kbd>または<kbd>Enter</kbd>を押すと答えが表示されます。答えが表示された後、<kbd>Space</kbd>または<kbd>Enter</kbd>を押すと「良い」ボタンが選択されます。<kbd>1</kbd>から<kbd>4</kbd>のキーを使用して特定の評価ボタンを選択することもできます。多くの人は、ほとんどのカードに<kbd>Space</kbd>で答え、忘れたときのために指を<kbd>1</kbd>に置いておくと便利だと感じています。</p>
-<p>ツールメニューの「デッキを学習」項目を使用すると、キーボードでデッキを素早く切り替えることができます。'/'キーでこれをトリガーできます。開くと、すべてのデッキが表示され、上部にフィルターエリアが表示されます。文字を入力すると、Ankiは入力した文字に一致するデッキのみを表示します。スペースを追加して複数の検索語を区切ることができ、Ankiはすべての検索語に一致するデッキのみを表示します。例えば、「ja 1」や「on1 ja」はどちらも「Japanese::Lesson1」というデッキに一致します。</p>
+<p>Ankiのほとんどの一般的な操作にはキーボードショートカットがあります。ほとんどのショートカットはインターフェースで確認できます：メニュー項目の横にはショートカットが表示されています。また、ボタンにマウスカーソルを合わせると、一般的にツールチップにショートカットが表示されます。</p>
+<p>学習中は、<kbd>Space</kbd>または<kbd>Enter</kbd>を押すと答えが表示されます。答えが表示された後、<kbd>Space</kbd>または<kbd>Enter</kbd>を押すと「正解」ボタンが選択されます。<kbd>1</kbd>から<kbd>4</kbd>のキーを使用して特定の評価ボタンを選択することもできます。多くの人は、ほとんどのカードに<kbd>Space</kbd>で回答し、答えを忘れたときのために指を<kbd>1</kbd>に置いておくと便利だと感じています。</p>
+<p>ツールメニューの「デッキを選択」項目を使用すると、キーボードでデッキを素早く切り替えることができます。<kbd>/</kbd>キーでこれをトリガーできます。開くと、すべてのデッキが表示され、上部にフィルターエリアが表示されます。文字を入力すると、Ankiは入力した文字をデッキ名に含むデッキのみを表示します。スペースを追加して複数の検索語を区切ることができ、Ankiはすべての検索語をデッキ名に含むデッキのみを表示します。例えば、「ja 1」や「on1 ja」はどちらも「Japanese::Lesson1」というデッキを表示します。</p>
 <h2 id="復習が遅れる場合"><a class="header" href="#復習が遅れる場合">復習が遅れる場合</a></h2>
-<p>復習が遅れると、Ankiは最も長く待っているカードを優先します。これは、最も長く待っているカードを取り、それらをランダムな順序で表示し、1日の復習制限に達するまで続けます。この順序付けにより、カードが無期限に待たされることはありませんが、新しいカードを導入すると、バックログを処理するまでその復習は表示されません。</p>
+<p>復習が遅れると、デフォルトではAnkiは最も長く待機しているカードを優先します。この順序付けにより、永久に表示されないまま待機し続けるカードが生じることを防ぎます。ただし、これにより、新規カードを追加しても、バックログ（期日を過ぎて待機している復習カード）を処理するまではそれらの新規カードは表示されません。</p>
 <p>遅延した復習の順序を変更したい場合は、<a href="filtered-decks.html">フィルターデッキ</a>を作成することで可能です。</p>
 <p>長い間待っていたカードに回答するとき、Ankiは次にカードを表示する時間を決定する際にその遅延を考慮に入れます。詳細については、Ankiの間隔反復<a href="https://shigeyukey.github.io/Anki-faqs-jp/due-times-after-a-break.html">アルゴリズム</a>に関するセクションを参照してください。</p>
 
